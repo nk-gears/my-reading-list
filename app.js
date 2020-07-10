@@ -1,9 +1,9 @@
-let input=document.querySelector('.categories');
+let input=document.querySelector('#searchKey');
 let count=document.querySelector('.count');
 let apiList=document.querySelector('.apis');
 let loaderHTML=document.querySelector('.loader');
 let scrollToTopBtn=document.querySelector('#top');
-document.querySelector('.showBtn').addEventListener('click',getApis );
+document.querySelector('#searchKey').addEventListener('change',filterResults );
 
 const renderLoader=()=>{
   let loader=`
@@ -21,53 +21,37 @@ const clearLoader=()=>{
   }
 
 }
-async function getApis(){
+
+async function filterResults(){
       apiList.innerHTML="";
-      count.textContent="";
-      let category=input.value;
-      
-      renderLoader();
-      fetch(`https://api.publicapis.org/entries?category=${category}&https=true`)
-    
-      .then(apis=>{
-             data=apis.json();
-             return data;}
-            )
-       .then(data=>{
+    //  count.textContent="";
+     let searchText=input.value;
 
-            // console.log(data);
-            count.textContent=`${data.count} Apis found`;
+      window.results.forEach(el => {
+        const hasMatch=(el.title.indexOf(searchText)>=0 ||
+        el.description.indexOf(searchText)>=0 ||
+        el.domain.indexOf(searchText)>=0 ||
+        el.content.indexOf(searchText)>=0
+        );
 
-            let entries=data.entries;
-            // console.log(entries);
-            clearLoader();
-            entries.forEach(el => {
-              if(el.Auth=="")
-                el.Auth='No Auth';
-                
-              displayApi(el);
-            });
-            
-            })
+        if(hasMatch) displayApi(el);
+      });
 
-            .catch(error=>{
-              if(error){
-                alert("Sorry, Something went wrong !");
-              }})
-          }
-          
-          
+}
+
     const displayApi =(el)=>{
 
-        let markup=` 
+        let markup=`
         <div class="apibox card " data-aos="fade-up">
-            <h4 class="mt-4">${el.API}</h4>
-            <p class="blue">${el.Description}</p>
-            <p class="float-left">Auth Type : ${el.Auth}</p>
-            <a href=${el.Link} class="btn link float-right" target="_blanck" >View</a>
+            <h4 class="mt-4">${el.domain}</h4>
+            <p class="blue">${el.title}</p>
+            <p><img width="100" src=${el.imageURL}></p>
+            <p class="blue">${el.description}</p>
+
+            <a href=${el.url} class="btn link float-right" target="_blanck" >View</a>
         </div>
         `;
-        
+
         apiList.insertAdjacentHTML('beforeend',markup)
 }
 

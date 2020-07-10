@@ -10,33 +10,21 @@
     <title>Reading List</title>
 
     <script>
-      function filterData(results){
-
+      function retreiveData(results){
+          window.results=results;
       }
     </script>
+
+    <script src="https://script.google.com/macros/s/AKfycbz89_XBJcMH63aaTcfb_sySM4flW5gwIgz6UCmkB-z-vH5D4dM/exec?start=1325437200&end=1325439000&prefix=retreiveData"></script>
+
 </head>
 <body>
     <nav class="navbar">
-       <h3><img src="img/favicon.png" class="logo"> Reading List</h3>
+       <h3>Reading List</h3>
+       <input type="text" placeholder="search keyword" class="form-control" id="searchKey"/>
     </nav>
       <div class="content">
 
-        <script src="https://script.google.com/macros/s/AKfycbz89_XBJcMH63aaTcfb_sySM4flW5gwIgz6UCmkB-z-vH5D4dM/exec?start=1325437200&end=1325439000&prefix=filterData"></script>
-
-          <div class="main input-data text-center">
-              <p class="desc">Reading List Archive</p>
-              <select class="form-control categories">
-                <option>Select Month/Year</option>
-                <option value="jun-2020">Jun 2020</option>
-
-
-               </select>
-
-              <button type="button" class="btn showBtn">Show List</button>
-              <h5 class="count mt-4"></h5>
-              <div class="text-center loader"></div>
-
-           </div>
       </div>
 
       <div class="apis">

@@ -4,17 +4,15 @@
   "description": "",
   "main": "app.js",
   "scripts": {
+    "build":"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rutikwankhade/free-apis.git"
+    "url": "git+https://github.com/nk-gears/my-reading-list.git"
   },
-  "author": "rutik wankhade",
+  "author": "Nirmal Kumar",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/rutikwankhade/free-apis/issues"
-  },
-  "homepage": "https://github.com/rutikwankhade/free-apis#readme",
+
   "dependencies": {}
 }
