@@ -39,13 +39,35 @@ async function filterResults(){
 
 }
 
+function formatDate( date, params ) {
+  var options = {
+      weekday: "short",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+      timeZone: "Asia/Kolkata",
+      timeZoneName: "short",
+  };
+
+  if( params ) {
+      options = Object.assign( options, params );
+  }
+
+  // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString
+  return new Date( date ).toLocaleString( 'en-US', options );
+}
+
     const displayApi =(el)=>{
 
         let markup=`
         <div class="apibox card " data-aos="fade-up">
+
         <h4 class="mt-4">${el.domain}</h4>
         <p class="blue"><a class="article_link" target="_blank" href="${el.url}">${el.title}</a></p>
         <p><img width="150" src=${el.imageURL}></p>
+        <p class="added_on">${formatDate(el.timestamp)}</p>
         </div>
         `;
 

@@ -40,6 +40,11 @@ select{
     padding-bottom:20px;
 }
 
+.added_on{
+
+    font-size: 0.7rem;
+
+}
 .apibox{
     margin:auto;
     padding:0px 0px 10px 0px;
@@ -82,8 +87,8 @@ footer{
     padding:10px;
     font-size: 14px;
 }
-.logo{height:30px;
-width:30px;}
+.logo{
+width:50px;}
 
 
 @media only screen and (min-width:1200px){
