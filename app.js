@@ -31,7 +31,7 @@ async function filterResults(){
         const hasMatch=(el.title.indexOf(searchText)>=0 ||
         el.description.indexOf(searchText)>=0 ||
         el.domain.indexOf(searchText)>=0 ||
-        el.content.indexOf(searchText)>=0
+        el.url.indexOf(searchText)>=0
         );
 
         if(hasMatch) displayApi(el);
@@ -43,12 +43,9 @@ async function filterResults(){
 
         let markup=`
         <div class="apibox card " data-aos="fade-up">
-            <h4 class="mt-4">${el.domain}</h4>
-            <p class="blue">${el.title}</p>
-            <p><img width="100" src=${el.imageURL}></p>
-            <p class="blue">${el.description}</p>
-
-            <a href=${el.url} class="btn link float-right" target="_blanck" >View</a>
+        <h4 class="mt-4">${el.domain}</h4>
+        <p class="blue"><a class="article_link" target="_blank" href="${el.url}">${el.title}</a></p>
+        <p><img width="150" src=${el.imageURL}></p>
         </div>
         `;
 
