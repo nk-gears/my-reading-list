@@ -27,7 +27,9 @@ async function filterResults(){
     //  count.textContent="";
      let searchText=input.value;
 
-      window.results.forEach(el => {
+     
+
+        window.results.forEach(el => {
         const hasMatch=(el.title.indexOf(searchText)>=0 ||
         el.description.indexOf(searchText)>=0 ||
         el.domain.indexOf(searchText)>=0 ||
